@@ -9,21 +9,24 @@ import se.lexicon.exceptions.workshop.fileIO.CSVReader_Writer;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
-		
-		List <String> maleFirstNames = CSVReader_Writer.getMaleFirstNames();
-        List <String> femaleFirstNames = CSVReader_Writer.getFemaleFirstNames();
+	public static void main(String[] args) {
+        try {
+            List<String> maleFirstNames = CSVReader_Writer.getMaleFirstNames();
+            List<String> femaleFirstNames = CSVReader_Writer.getFemaleFirstNames();
 
-        List <String> lastNames = CSVReader_Writer.getLastNames();
+            List<String> lastNames = CSVReader_Writer.getLastNames();
 
 
-        NameService nameService = new NameService(maleFirstNames, femaleFirstNames,lastNames);
+            NameService nameService = new NameService(maleFirstNames, femaleFirstNames, lastNames);
 
-        Person test1 = nameService.getNewRandomPerson();
-        Person test2 = nameService.getNewRandomPerson();
-        System.out.println(test1);
-        System.out.println(test2);
+            Person test1 = nameService.getNewRandomPerson();
+            Person test2 = nameService.getNewRandomPerson();
+            System.out.println(test1);
+            System.out.println(test2);
 
-	}
+        } catch (IOException e) {
+            System.out.println("An IO exception occurred. Handle before running.");
+        }
 
+    }
 }
